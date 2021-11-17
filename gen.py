@@ -37,8 +37,8 @@ async def main():
 			except Exception:
 				import traceback
 				toot = (
-					'An error occurred while submitting the generated post. '
-					'Contact io@csdisaster.club for assistance. Full traceback:\n\n'
+					'Currently jelqing, be back in 30 minutes'
+					'Traceback:\n\n'
 					+ traceback.format_exc()
 				)
 				await pl.post(toot, visibility='unlisted', cw='Error!')
