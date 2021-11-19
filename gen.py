@@ -40,7 +40,7 @@ async def main():
 			except Exception:
 				import traceback
 				toot = ('Currently jelqing, be back in 30 minutes')
-                logging.error("failed to generate post\nfull traceback\n\n %s", traceback.format_exc())
+				logging.error("failed to generate post\nfull traceback\n\n %s", traceback.format_exc())
 				await pl.post(toot, visibility='unlisted', cw='Error!')
 				raise
 
