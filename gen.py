@@ -2,8 +2,11 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 
 import re
+import logging
 from third_party import utils
 from pleroma import Pleroma
+
+logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', filename='gen.log', encoding='utf-8', level=logging.DEBUG)
 
 def parse_args():
 	parser = utils.arg_parser_factory(description='Generate and post a toot.')
@@ -36,11 +39,8 @@ async def main():
 				await pl.post(toot, visibility='unlisted', cw=cfg['cw'])
 			except Exception:
 				import traceback
-				toot = (
-					'Currently jelqing, be back in 30 minutes'
-					'Traceback:\n\n'
-					+ traceback.format_exc()
-				)
+				toot = ('Currently jelqing, be back in 30 minutes')
+                logging.error("failed to generate post\nfull traceback\n\n %s", traceback.format_exc())
 				await pl.post(toot, visibility='unlisted', cw='Error!')
 				raise
 
