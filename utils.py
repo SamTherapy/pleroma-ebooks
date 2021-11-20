@@ -2,6 +2,7 @@
 
 import anyio
 import contextlib
+import sqlite3, shutil, os
 from functools import wraps
 from datetime import datetime, timezone
 
